@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Instance</class>
+ <widget class="QMainWindow" name="Instance">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>833</width>
+    <height>610</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>500</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>quit</string>
+    </property>
+   </widget>
+   <widget class="QTreeWidget" name="tasks_tree_widget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>31</y>
+      <width>761</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Status</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Reports</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Severity</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Trend</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Actions</string>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>833</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="scan_menu">
+    <property name="title">
+     <string>Scan Management</string>
+    </property>
+    <addaction name="tasks_action"/>
+    <addaction name="reports_action"/>
+    <addaction name="notes_action"/>
+    <addaction name="overrides_action"/>
+   </widget>
+   <widget class="QMenu" name="asset_menu">
+    <property name="title">
+     <string>Asset Management</string>
+    </property>
+    <addaction name="hosts_action"/>
+   </widget>
+   <widget class="QMenu" name="secinfo_menu">
+    <property name="title">
+     <string>SecInfo Management</string>
+    </property>
+    <addaction name="actionNVTs"/>
+    <addaction name="actionCVES"/>
+    <addaction name="actionCPEs"/>
+    <addaction name="actionOVAL"/>
+    <addaction name="actionDFN_CERT"/>
+    <addaction name="action_SecInfo"/>
+   </widget>
+   <widget class="QMenu" name="config_menu">
+    <property name="title">
+     <string>Configuration</string>
+    </property>
+    <widget class="QMenu" name="targets_menu">
+     <property name="title">
+      <string>Targets</string>
+     </property>
+     <addaction name="portlist_action"/>
+     <addaction name="cred_action"/>
+    </widget>
+    <addaction name="targets_menu"/>
+    <addaction name="scanconfig_action"/>
+    <addaction name="actionAlert"/>
+    <addaction name="actionSchedu"/>
+    <addaction name="actionReport_Formats"/>
+    <addaction name="actionSlave"/>
+    <addaction name="actionAgents"/>
+    <addaction name="actionFilters"/>
+    <addaction name="actionTags"/>
+    <addaction name="actionPermissions"/>
+   </widget>
+   <widget class="QMenu" name="extras_menu">
+    <property name="title">
+     <string>Extras</string>
+    </property>
+    <addaction name="actionTrashcan"/>
+    <addaction name="actionMy_settins"/>
+    <addaction name="actionPerfermence"/>
+    <addaction name="actionCVSS_Calculator"/>
+   </widget>
+   <widget class="QMenu" name="admin_menu">
+    <property name="title">
+     <string>Administration</string>
+    </property>
+    <addaction name="actionUsers"/>
+    <addaction name="actionGroups"/>
+    <addaction name="actionRoles"/>
+    <addaction name="actionNVT_Feed"/>
+    <addaction name="actionSCAP_Feed"/>
+    <addaction name="actionCERT_Feed"/>
+   </widget>
+   <widget class="QMenu" name="help_menu">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionContents"/>
+    <addaction name="actionHelp"/>
+   </widget>
+   <addaction name="scan_menu"/>
+   <addaction name="asset_menu"/>
+   <addaction name="secinfo_menu"/>
+   <addaction name="config_menu"/>
+   <addaction name="extras_menu"/>
+   <addaction name="admin_menu"/>
+   <addaction name="help_menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="tasks_action">
+   <property name="text">
+    <string>Tasks</string>
+   </property>
+  </action>
+  <action name="reports_action">
+   <property name="text">
+    <string>Reports</string>
+   </property>
+  </action>
+  <action name="notes_action">
+   <property name="text">
+    <string>Notes</string>
+   </property>
+  </action>
+  <action name="overrides_action">
+   <property name="text">
+    <string>Overrides</string>
+   </property>
+  </action>
+  <action name="hosts_action">
+   <property name="text">
+    <string>Hosts</string>
+   </property>
+  </action>
+  <action name="actionNVTs">
+   <property name="text">
+    <string>NVTs</string>
+   </property>
+  </action>
+  <action name="actionCVES">
+   <property name="text">
+    <string>CVEs</string>
+   </property>
+  </action>
+  <action name="actionCPEs">
+   <property name="text">
+    <string>CPEs</string>
+   </property>
+  </action>
+  <action name="actionOVAL">
+   <property name="text">
+    <string>OVAL Definitions</string>
+   </property>
+  </action>
+  <action name="actionDFN_CERT">
+   <property name="text">
+    <string>DFN-CERT Advisories</string>
+   </property>
+  </action>
+  <action name="action_SecInfo">
+   <property name="text">
+    <string>All SecInfo</string>
+   </property>
+  </action>
+  <action name="scanconfig_action">
+   <property name="text">
+    <string>Scan Configs</string>
+   </property>
+  </action>
+  <action name="actionAlert">
+   <property name="text">
+    <string>Alert</string>
+   </property>
+  </action>
+  <action name="actionSchedu">
+   <property name="text">
+    <string>Schedules</string>
+   </property>
+  </action>
+  <action name="actionReport_Formats">
+   <property name="text">
+    <string>Report Formats</string>
+   </property>
+  </action>
+  <action name="actionSlave">
+   <property name="text">
+    <string>Slaves</string>
+   </property>
+  </action>
+  <action name="actionAgents">
+   <property name="text">
+    <string>Agents</string>
+   </property>
+  </action>
+  <action name="actionFilters">
+   <property name="text">
+    <string>Filters</string>
+   </property>
+  </action>
+  <action name="actionTags">
+   <property name="text">
+    <string>Tags</string>
+   </property>
+  </action>
+  <action name="actionPermissions">
+   <property name="text">
+    <string>Permissions</string>
+   </property>
+  </action>
+  <action name="actionTrashcan">
+   <property name="text">
+    <string>Trashcan</string>
+   </property>
+  </action>
+  <action name="actionMy_settins">
+   <property name="text">
+    <string>My settings</string>
+   </property>
+  </action>
+  <action name="actionPerfermence">
+   <property name="text">
+    <string>Perfermance</string>
+   </property>
+  </action>
+  <action name="actionCVSS_Calculator">
+   <property name="text">
+    <string>CVSS Calculator</string>
+   </property>
+  </action>
+  <action name="actionUsers">
+   <property name="text">
+    <string>Users</string>
+   </property>
+  </action>
+  <action name="actionGroups">
+   <property name="text">
+    <string>Groups</string>
+   </property>
+  </action>
+  <action name="actionRoles">
+   <property name="text">
+    <string>Roles</string>
+   </property>
+  </action>
+  <action name="actionNVT_Feed">
+   <property name="text">
+    <string>NVT Feed</string>
+   </property>
+  </action>
+  <action name="actionSCAP_Feed">
+   <property name="text">
+    <string>SCAP Feed</string>
+   </property>
+  </action>
+  <action name="actionCERT_Feed">
+   <property name="text">
+    <string>CERT Feed</string>
+   </property>
+  </action>
+  <action name="actionContents">
+   <property name="text">
+    <string>Contents</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="portlist_action">
+   <property name="text">
+    <string>Port Lists</string>
+   </property>
+  </action>
+  <action name="cred_action">
+   <property name="text">
+    <string>Credentials</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Instance</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>759</x>
+     <y>538</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>416</x>
+     <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
