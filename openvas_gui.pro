@@ -15,20 +15,18 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     instance.cpp \
-    genxml.cpp
+    genxml.cpp \
+    omp.cpp
 
 HEADERS  += mainwindow.h \
     instance.h \
     genxml.h \
-    params.h
+    params.h \
+    omp.h
 
 FORMS    += mainwindow.ui \
     instance.ui
 
 UI_DIR = ./UI
-
-INCLUDEPATH += /usr/include/libxml2
-
-LIBS += /usr/lib/x86_64-linux-gnu/libxml2.so
 
 RESOURCES +=

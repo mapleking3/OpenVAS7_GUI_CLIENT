@@ -1,6 +1,7 @@
 #include "instance.h"
 #include "ui_instance.h"
 #include "genxml.h"
+#include "omp.h"
 
 #include <QtGui>
 #include <QLabel>
@@ -17,12 +18,12 @@
 #include <QDomNode>
 #include <QDomNodeList>
 
-InstanceDialog::InstanceDialog(QWidget *parent,QSslSocket *ssl_socket)
+InstanceDialog::InstanceDialog(QWidget *parent, OmpSession *omp_session)
     : QMainWindow(parent),_inst_ui(new Ui::Instance())
 {
     _inst_ui->setupUi(this);
 
-    _ssl_socket = ssl_socket;
+    _omp_session = omp_session;
 
     connect(_inst_ui->tasks_action, SIGNAL(triggered()), this, SLOT(get_tasks()));
 }
@@ -38,6 +39,8 @@ void InstanceDialog::get_targets()
 
 void InstanceDialog::get_tasks()
 {
+#if 0
+    _omp_session->get_tasks();
     _ssl_socket->write(GenXml(GenXml::EGET_TASKS).GetXml());
     if (_ssl_socket->waitForReadyRead())
     {
@@ -99,4 +102,5 @@ void InstanceDialog::get_tasks()
             }
         }
     }
+#endif
 }

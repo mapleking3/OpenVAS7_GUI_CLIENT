@@ -8,6 +8,7 @@ class QLabel;
 class QLineEdit;
 class QPushButton;
 class QSslSocket;
+class OmpSession;
 
 namespace Ui {
     class Instance;
@@ -17,7 +18,7 @@ class InstanceDialog : public QMainWindow
 {
     Q_OBJECT
     public:
-        InstanceDialog(QWidget *parent = 0, QSslSocket *ssl_socke = NULL);
+        InstanceDialog(QWidget *parent = 0, OmpSession *omp_session = NULL);
         ~InstanceDialog();
 
 
@@ -27,7 +28,7 @@ private slots:
 
 private:
         Ui::Instance *_inst_ui;
-        QSslSocket *_ssl_socket;
+        OmpSession *_omp_session;
 };
 
 #endif ///< __INSTANCE_H__

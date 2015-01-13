@@ -53,7 +53,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -100,6 +100,12 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
       </spacer>
      </item>
      <item>
@@ -127,8 +133,17 @@
        </item>
        <item>
         <widget class="QLineEdit" name="edit_pw">
+         <property name="inputMethodHints">
+          <set>Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+         </property>
          <property name="text">
           <string>zxsoft</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::PasswordEchoOnEdit</enum>
          </property>
         </widget>
        </item>

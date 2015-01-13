@@ -1,12 +1,9 @@
 #ifndef __PARAMS_H__
 #define __PARAMS_H__
 
-#include <utility>
-#include <list>
-#include <map>
-#include <string>
-
-using namespace std;
+#include <QPair>
+#include <QList>
+#include <QString>
 
 class Params;
 
@@ -14,9 +11,9 @@ class param
 {
 public:
     param() : child(NULL) {}
-    string name;
-    string value;
-    pair<string,string> prop;
+    QString name;
+    QString value;
+    QPair<QString,QString> prop;
     Params *child;
 };
 
@@ -26,7 +23,7 @@ class Params
         Params() {}
         ~Params() {}
 
-        void addParam(string name, string value, pair<string,string> prop, Params *child)
+        void addParam(const QString &name, const QString &value, QPair<QString,QString> prop, Params *child)
         {
             param p;
             p.child = child;
@@ -36,28 +33,28 @@ class Params
             _params.insert(_params.end(),p);
         }
 
-        void addParam(string name, string value, pair<string,string> prop)
+        void addParam(const QString &name, const QString &value, QPair<QString,QString> prop)
         {
             addParam(name, value, prop, NULL);
         }
 
-        void addParam(string name, string value)
+        void addParam(const QString &name, const QString &value)
         {
-            addParam(name, value, pair<string,string>(), NULL);
+            addParam(name, value, QPair<QString,QString>(), NULL);
         }
 
-        void addParam(string name, pair<string,string> prop)
+        void addParam(const QString &name, QPair<QString,QString> prop)
         {
-            addParam(name, string(), prop, NULL);
+            addParam(name, QString(), prop, NULL);
         }
 
-        void addParam(string name, Params *p)
+        void addParam(const QString &name, Params *p)
         {
-            addParam(name, string(), pair<string,string>(), p);
+            addParam(name, QString(), QPair<QString,QString>(), p);
         }
 
     //private:
-        list<struct param> _params;
+        QList<struct param> _params;
 };
 
 #endif ///< __PARAMS_H__

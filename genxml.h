@@ -12,7 +12,7 @@
 #ifndef __GEN_XML_H__
 #define __GEN_XML_H__
 
-#include <string>
+#include <QString>
 #include "params.h"
 
 using namespace std;
@@ -140,25 +140,17 @@ class GenXml
             VERIFY_AGENT,
             VERIFY_REPORT_FORMAT
         } OMP_CMD_E;
-        GenXml(GenXml::OMP_CMD_E cmd, Params &p);
+        GenXml(GenXml::OMP_CMD_E cmd, const Params &p);
         GenXml(GenXml::OMP_CMD_E cmd);
-        GenXml(string xml);
+        GenXml(const QString &xml);
         ~GenXml();
 
-        char *GetXml(void);
-
-
-        char *XmlAuthenticate();
-        char *XmlCreateAgent();
-        char *XmlCreateConfig();
-        char *XmlCreateAlert();
-
+        QString &GetXml(void);
 
     private:
-        std::string CommandToString(GenXml::OMP_CMD_E cmd);
+        QString CommandToString(GenXml::OMP_CMD_E cmd);
 
-        char *_xml;
-        int _xml_len;
+        QString _xml;
 };
 
 #endif ///< __GEN_XML_H__
