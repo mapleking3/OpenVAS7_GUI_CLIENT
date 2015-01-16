@@ -30,10 +30,10 @@
    <widget class="QTreeWidget" name="tasks_tree_widget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>31</y>
-      <width>761</width>
-      <height>441</height>
+      <x>40</x>
+      <y>30</y>
+      <width>721</width>
+      <height>261</height>
      </rect>
     </property>
     <column>
@@ -74,7 +74,7 @@
      <x>0</x>
      <y>0</y>
      <width>833</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="scan_menu">

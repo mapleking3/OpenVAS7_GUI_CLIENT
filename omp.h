@@ -7,6 +7,12 @@
 #include <QtNetwork/QAbstractSocket>
 #include <QtNetwork/QSslCertificate>
 #include <QFile>
+#include <QXmlSimpleReader>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomNode>
+#include <QDomNodeList>
+#include <QMessageBox>
 
 #include "genxml.h"
 
@@ -27,49 +33,25 @@ typedef enum {
     ESTATUS_503     = 503
 } EOMP_RESP_STATUS;
 
-struct cmd_authenticate {
-    QString username;
-    QString password;
-};
+class OmpException
+{
+public:
+    OmpException(const int nErrCode)
+    {
+        _err_code = nErrCode;
+    }
+    OmpException(const OmpException&  e)
+    {
+        _err_code = e._err_code;
+    }
+    virtual ~OmpException();
 
-struct cmd_authenticate_resp {
-    QString status;
-    QString status_text;
-    QString role;
-    QString timezone;
-};
+    int GetErrorCode() const { return _err_code; }	
 
-struct cmd_create_agent {
-    QString installer;
-    QString signature;
-    QString name;
-    QString comment;
-    QString copy;
-    QString howto_install;
-    QString howto_use;
-};
-
-struct cmd_create_agent_resp {
-    QString status;
-    QString status_text;
-    QString id;
-};
-
-struct cmd_get_tasks {
-    QString task_id;
-    QString filter;
-    QString filter_id;
-    QString trash;
-    QString details;
-    QString rcfile;
-    QString apply_overrides;
-};
-
-struct cmd_get_tasks_resp {
-    QString status;
-    QString status_text;
-    QString apply_overides;
-    //QList
+    //static const char* GetErrorCodeAsString(const int nErrCode);
+	
+private:
+    int    _err_code;
 };
 
 class OmpSession
@@ -79,10 +61,14 @@ public:
                const QString &cafile= DEF_OMP_SRV_CAFILE);
     ~OmpSession();
 
-    int get_tasks();
+    QDomDocument *get_tasks(const QDomDocument &doc);
+    QDomDocument *create_task(const QDomDocument &doc);
+    QDomDocument *delete_task(const QDomDocument &doc);
     bool authenticate(const QString &username, const QString &password);
 
 private:
+    QDomDocument *omp(const QDomDocument &doc);
+
     QSslSocket *_ssl_socket;
 };
 

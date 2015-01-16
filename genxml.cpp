@@ -29,7 +29,7 @@ static void parseParams(QDomDocument &doc, QDomElement &root, const Params &p)
         QDomElement elem = doc.createElement(iter->name);
         root.appendChild(elem);
 
-        if (iter->prop == QPair<QString,QString>())
+        if (iter->prop != QPair<QString,QString>())
         {
             elem.setAttribute(iter->prop.first, iter->prop.second);
         }
@@ -40,8 +40,7 @@ static void parseParams(QDomDocument &doc, QDomElement &root, const Params &p)
         }
         else
         {
-            qDebug("here set node value:%s\n", iter->value.toStdString().c_str());
-            elem.setNodeValue(iter->value);
+            elem.appendChild(doc.createTextNode(iter->value));
         }
     }
 }

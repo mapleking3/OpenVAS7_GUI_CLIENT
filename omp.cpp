@@ -38,6 +38,30 @@ OmpSession::~OmpSession()
     delete _ssl_socket;
 }
 
+QDomDocument *OmpSession::omp(const QDomDocument &doc)
+{
+    QDomDocument *resp = new QDomDocument;
+
+    _ssl_socket->write(doc.toString().toStdString().c_str());
+
+    if (_ssl_socket->waitForReadyRead())
+    {
+        QString errorMsg;
+        int errorLine = 0;
+        int errorCol = 0;
+        resp->setContent(_ssl_socket->readAll(), false, &errorMsg, &errorLine,
+                &errorCol);
+        if (!resp->isNull())
+        {
+            return resp;
+        }
+    }
+
+    delete resp;
+
+    return NULL;
+}
+
 bool OmpSession::authenticate(const QString &username, const QString &password)
 {
 
@@ -47,10 +71,6 @@ bool OmpSession::authenticate(const QString &username, const QString &password)
 
     Params credentials;
     credentials.addParam("credentials", &p);
-
-    QString auth_string(GenXml(GenXml::EAUTHENTICATE,credentials).GetXml());
-
-    qDebug("auth string:%s\n", auth_string.toStdString().c_str());
 
     _ssl_socket->write(GenXml(GenXml::EAUTHENTICATE,credentials).GetXml().toStdString().c_str());
     if (_ssl_socket->waitForReadyRead())
@@ -87,4 +107,19 @@ bool OmpSession::authenticate(const QString &username, const QString &password)
         }
     }
     return true;
+}
+
+QDomDocument *OmpSession::get_tasks(const QDomDocument &doc)
+{
+    return omp(doc);
+}
+
+QDomDocument *OmpSession::create_task(const QDomDocument &doc)
+{
+    return omp(doc);
+}
+
+QDomDocument *OmpSession::delete_task(const QDomDocument &doc)
+{
+    return omp(doc);
 }
